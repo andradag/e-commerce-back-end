@@ -1,20 +1,33 @@
-const { Model, DataTypes } = require("sequelize");
+const Category = require("./Category");
+const Product = require("./Product");
+const ProductTag = require("./ProductTag");
+const Tag = require("./Tag");
 
-const sequelize = require("../config/connection.js");
+Category.hasMany(Product, {
+  foreignKey: "category_id",
+});
 
-class Category extends Model {}
+Product.belongsTo(Category, {
+  foreignKey: "category_id",
+});
 
-Category.init(
-  {
-    // define columns
+Product.belongsToMany(Tag, {
+  through: {
+    model: ProductTag,
+    unique: false,
   },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: "category",
-  }
-);
+});
 
-module.exports = Category;
+Tag.belongsToMany(Product, {
+  through: {
+    model: this.ProductTag,
+    unique: false,
+  },
+});
+
+module.exports = {
+  Category,
+  Product,
+  ProductTag,
+  Tag,
+};
