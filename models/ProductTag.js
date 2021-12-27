@@ -2,9 +2,9 @@ const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection.js");
 
-class Category extends Model {}
+class ProductTag extends Model {}
 
-Category.init(
+ProductTag.init(
   {
     // define columns
     id: {
