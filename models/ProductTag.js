@@ -33,8 +33,8 @@ Category.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "category",
+    modelName: "product_tag",
   }
 );
 
-module.exports = Category;
+module.exports = ProductTag;

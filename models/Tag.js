@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection.js");
+const { Tag } = require("./index.js");
 
 class Category extends Model {}
 
@@ -26,8 +27,8 @@ Category.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "category",
+    modelName: "tag",
   }
 );
 
-module.exports = Category;
+module.exports = Tag;
